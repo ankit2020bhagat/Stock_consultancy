@@ -6,6 +6,13 @@ const PORT = process.env.PORt || 8080;
 connectDB();
 app.use(express.json());
 app.use("/user", userRouter);
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
